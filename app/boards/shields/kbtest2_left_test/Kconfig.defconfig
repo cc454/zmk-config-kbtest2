@@ -1,7 +1,7 @@
 if SHIELD_KBTEST2_LEFT_TEST
 
 config ZMK_KEYBOARD_NAME
-    default "KBTest2 Left Test"
+    default "KBTest2 Left"
 
 config ZMK_SPLIT
     default y
