@@ -16,7 +16,7 @@ jobs:
     container:
       image: docker.io/zmkfirmware/zmk-build-arm:4.1
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - run: west init -l app
