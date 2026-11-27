@@ -6,6 +6,7 @@ on:
     paths:
       - .github/workflows/kbtest2-left-test.yml
       - app/boards/shields/kbtest2_left_test/**
+      - app/west.yml
 
 permissions:
   contents: read
