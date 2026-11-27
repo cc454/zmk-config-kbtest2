@@ -20,7 +20,7 @@ permissions: {}
 
 jobs:
   build:
-    if: ${{ always() }}
+    if: ${{ !cancelled() && needs.compile-matrix.result == 'success' && needs.compile-matrix.outputs.include-list != '' && needs.compile-matrix.outputs.include-list != '[]' }}
     runs-on: ubuntu-latest
     container:
       image: docker.io/zmkfirmware/zmk-build-arm:4.1
