@@ -5,15 +5,26 @@
     keymap {
         compatible = "zmk,keymap";
 
-        matrix_test {
+        swiss_german {
+            // Windows Swiss German maps the HID Y position to Z.
             bindings = <
-            &kp ESC &kp A &kp B &kp C &kp D &kp E &kp F &kp G
-            &kp H &kp I &kp J &kp K &kp L &kp M &kp N &kp O
-            &kp P &kp Q &kp R &kp S &kp T &kp U &kp V &kp W
-            &kp X &kp Y &kp Z &kp N0 &kp N1 &kp N2 &kp N3 &kp N4
-            &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp MINUS &kp EQUAL &kp SLASH
+                &kp C_MUTE  &kp ESC  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6
+                &kp PRINTSCREEN  &kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &none
+                &kp PG_UP  &kp CAPSLOCK  &kp A  &kp S  &kp D  &kp F  &kp G  &none
+                &kp PG_DN  &kp LSHIFT  &kp NON_US_BACKSLASH  &kp Y  &kp X  &kp C  &kp V  &kp B
+                &kp C_AL_CALCULATOR  &kp LCTRL  &mo 1  &kp LGUI  &kp LALT  &kp SPACE  &none  &none
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        fn {
+            bindings = <
+                &trans &trans &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans &none
+                &trans &trans &trans &trans &trans &trans &trans &none
+                &trans &trans &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &none &none
+            >;
         };
     };
 };
