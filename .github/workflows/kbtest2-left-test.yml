@@ -1,11 +1,11 @@
-name: KBTest2 left-half test
+name: KBTest2 split firmware
 
 on:
   workflow_dispatch:
   push:
     paths:
       - .github/workflows/kbtest2-left-test.yml
-      - app/boards/shields/kbtest2_left_test/**
+      - app/boards/shields/kbtest2/**
       - app/west.yml
 
 permissions:
@@ -14,6 +14,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        side: [left, right]
     container:
       image: docker.io/zmkfirmware/zmk-build-arm:4.1
     steps:
@@ -23,9 +26,9 @@ jobs:
       - run: west init -l app
       - run: west update --fetch-opt=--filter=tree:0
       - run: west zephyr-export
-      - run: west build -s app -b nice_nano//zmk -- -DSHIELD=kbtest2_left_test
+      - run: west build -s app -b nice_nano//zmk -- -DSHIELD=kbtest2_${{ matrix.side }}
       - uses: actions/upload-artifact@v4
         with:
-          name: kbtest2-left-test
+          name: kbtest2-${{ matrix.side }}
           path: build/zephyr/zmk.uf2
           if-no-files-found: error
